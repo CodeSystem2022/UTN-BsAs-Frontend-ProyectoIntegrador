@@ -26,9 +26,33 @@
             <script>
                 if (window.localStorage.getItem('token')) {
                     const saludo = document.createElement('h2');
+                    const renglon = document.createElement('br');
                     console.log(saludo);
                     saludo.textContent = "Bienvenido " + window.localStorage.getItem('username');
                     document.getElementById('login-container').appendChild(saludo);
+                    document.getElementById('login-container').appendChild(renglon);
+
+
+                    const boton = document.createElement('button');
+                    // TODO
+                    // Poner un boton bonito
+
+                    boton.innerHTML = `
+                    
+                        <form action="/action_page.php">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#myModal">Logout</button>
+                        </form> 
+                    `;
+                    boton.addEventListener("click", e => {
+                        // Cancela el evento por defecto
+                        e.preventDefault();
+                        window.localStorage.setItem('token') = "";
+                        window.localStorage.setItem('username') = "";
+                        location.reload();
+                    });
+                    document.getElementById('login-container').appendChild(boton);
+
                 }
             </script>
 
